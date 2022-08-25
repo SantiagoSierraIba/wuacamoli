@@ -2,13 +2,15 @@ const productos = []
 const campos = document.querySelectorAll("input")
 const btnCargar = document.querySelector(".btn .btn-dark")
 const cuerpo = document.getElementById("cuerpo")
+const botonCarrito = document.getElementById("botonCarrito")
 
 
 class Producto {
-    constructor(id, nombre, precio) {
+    constructor(id, nombre, precio, imagen) {
         this.id = id
         this.nombre = nombre
         this.precio = precio
+        // this.imagen=imagen
     }
 }
 
@@ -83,4 +85,26 @@ function focoEnCampos() {
 }
 
 focoEnCampos()
+
+
+// function crearBotones(){
+//     productos.forEach((prod) => {
+//         botonCarrito.innerHTML='
+
+//         '
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
