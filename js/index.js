@@ -176,9 +176,8 @@ function generarTotal() {
         acumTotal += prod.precio * prod.cantidad
         console.table(carrito)
     })
-    if (carrito == []) {
-        totalCompra.innerHTML =
-            `Total= $0`
+    if (carritoSection.innerHTML=="" || carrito == []) {
+        totalCompra.innerHTML = ""
     } else {
         totalCompra.innerHTML =
             `Total= $${acumTotal}`

@@ -6,9 +6,14 @@
     width: 160px;
 }
 
+h2{
+    margin: 15px 0;
+}
+
+/* Footer */
 footer{
     background-color: #F4F4ED;
-    height: 400px;
+    height: 450px;
     text-align: center;
     padding-top: 20px;
 }
