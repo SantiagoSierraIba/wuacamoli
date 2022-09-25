@@ -2,6 +2,7 @@
 const cuerpo = document.getElementById("cuerpo")
 const loader = document.getElementById("loader")
 const carritoSection = document.getElementById("carritoSection")
+const totalCompra = document.getElementById("totalCompra")
 const btnEnviar = document.getElementById("btnEnviar")
 const nombreCliente = document.getElementById("nombreCliente")
 const edadCliente = document.getElementById("edadCliente")
@@ -72,7 +73,6 @@ cargarContenido()
 function agregarFuncionalidad() {
     tf.forEach(prod => {
         document.querySelector(`#btn-agregar${prod.id}`).addEventListener("click", () => {
-            console.table(prod)
             agregarAlCarrito(prod)
         })
     })
@@ -87,7 +87,7 @@ function agregarAlCarrito(prod) {
         let prodFind = carrito.find(productoFinal => productoFinal.id === prod.id)
         prodFind.cantidad++;
     }
-    console.log(carrito)
+    console.table(carrito)
     renderizarCarrito()
 }
 
@@ -105,6 +105,8 @@ function renderizarCarrito() {
                     <button id="btn-borrar${prod.id}" class="btn btn-light">Quitar del Carrito</button>
                     <br></br>
                     <button id="btn-restar${prod.id}" class="btn btn-light">Restar Cantidad</button>
+                    <br></br>
+                    <button id="btn-sumar${prod.id}" class="btn btn-light">Agregar Cantidad</button>
                 </div>
             </div>
         </div>`
@@ -112,6 +114,8 @@ function renderizarCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
     borrarProducto()
     restarCantidad()
+    agregarCantidad()
+    generarTotal()
 }
 
 function borrarProducto() {
@@ -128,27 +132,62 @@ function restarCantidad(prod) {
     carrito.forEach((prod) => {
         document.querySelector(`#btn-restar${prod.id}`).addEventListener("click", () => {
             let existe = carrito.some((productoSome) => productoSome.id === prod.id)
-            // debugger
             if (existe === false) {
                 prod.cantidad = 0;
-                carritoSection.innerHTML=""
+                carritoSection.innerHTML = ""
             } else {
                 let prodFind = carrito.find(productoFinal => productoFinal.id === prod.id)
                 prodFind.cantidad--;
-                if (prodFind.cantidad==0){
-                    carritoSection.innerHTML=""
+                if (prodFind.cantidad == 0) {
+                    carrito = carrito.filter((productoFilter) => productoFilter.id !== prod.id)
+                    renderizarCarrito()
                 }
-                else{
+                else {
                     renderizarCarrito()
                 }
             }
-
-            console.log(carrito)
+            console.table(carrito)
         })
     })
 }
 
-renderizarCarrito()
+function agregarCantidad(prod) {
 
+    carrito.forEach((prod) => {
+        document.querySelector(`#btn-sumar${prod.id}`).addEventListener("click", () => {
+            let existe = carrito.some((productoSome) => productoSome.id === prod.id)
+            if (existe === false) {
+                prod.cantidad = 0;
+                carritoSection.innerHTML = ""
+            } else {
+                let prodFind = carrito.find(productoFinal => productoFinal.id === prod.id)
+                prodFind.cantidad++;
+                renderizarCarrito()
+            }
+            console.table(carrito)
+        })
+    })
+}
+
+
+function generarTotal() {
+    let acumTotal = 0
+    carrito.forEach((prod) => {
+        acumTotal += prod.precio * prod.cantidad
+        console.table(carrito)
+    })
+    if (carrito == []) {
+        totalCompra.innerHTML =
+            `Total= $0`
+    } else {
+        totalCompra.innerHTML =
+            `Total= $${acumTotal}`
+    }
+}
+
+
+//Para que cuando se refresque página siga apareciendo el carrito
+renderizarCarrito()
+generarTotal()
 
 
