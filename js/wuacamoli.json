@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "nombre": "Bucket Grey",
+        "precio": 60000
+    },
+    {
+        "id": 2,
+        "nombre": "Bucket Green",
+        "precio": 60000
+    },
+    {
+        "id": 3,
+        "nombre": "Bucket Purple",
+        "precio": 60000
+    },
+    {
+        "id": 4,
+        "nombre": "Vest Grey",
+        "precio": 100000
+    },
+    {
+        "id": 5,
+        "nombre": "Vest Purple",
+        "precio": 100000
+    },
+    {
+        "id": 6,
+        "nombre": "Poncho Yellow",
+        "precio": 150000
+    },
+    {
+        "id": 7,
+        "nombre": "Poncho Pink",
+        "precio": 150000
+    },
+    {
+        "id": 8,
+        "nombre": "Sunglass Yellow & Green",
+        "precio": 90000
+    },
+    {
+        "id": 9,
+        "nombre": "Sunglass Purple & Pink",
+        "precio": 90000
+    },
+    {
+        "id": 10,
+        "nombre": "Chain Silver",
+        "precio": 250000
+    }
+]
