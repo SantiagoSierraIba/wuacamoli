@@ -4,6 +4,7 @@ const loader = document.getElementById("loader")
 const carritoSection = document.getElementById("carritoSection")
 const totalCompra = document.getElementById("totalCompra")
 const btnEnviar = document.getElementById("btnEnviar")
+const btnBorrarComentarios = document.getElementById("btnBorrarComentarios")
 const nombreCliente = document.getElementById("nombreCliente")
 const edadCliente = document.getElementById("edadCliente")
 const comentariosCliente = document.getElementById("comentariosCliente")
@@ -15,19 +16,27 @@ let contenidoHTML = ""
 
 // Formulario de Datos personales
 const datosCompletos = () => (nombreCliente.value !== "" && edadCliente.value !== "" && comentariosCliente.value !== "" && parseInt(edadCliente.value)) ? true : false
-const mostrarMensaje = () => (datosCompletos()) ? sweetAlert("Gracias por ingresar tus comentarios", 'success', 'green') : sweetAlert("Completa todos los valores solicitados.", 'error', 'red')
+const mostrarMensaje = () => (datosCompletos()) ? sweetAlert("Gracias por ingresar tus comentarios", 'success', 'green','white') : sweetAlert("Completa todos los valores solicitados.", 'error', 'red','white')
+const borrarComentarios = () => {
+    sweetAlert("Los datos fueron borrados de manera exitosa", "info", "yellow",'black')
+    debugger
+    nombreCliente.value=""
+    edadCliente.value=""
+    comentariosCliente.value=""
+}
+btnBorrarComentarios.addEventListener("click", borrarComentarios)
 btnEnviar.addEventListener("click", mostrarMensaje)
 
-const sweetAlert = (mensaje, icono, bgcolor) => {
+const sweetAlert = (mensaje, icono, bgcolor, fontcolor) => {
     Swal.fire({
         toast: true,
         position: 'top-end',
         text: mensaje,
         icon: icono,
         showConfirmButton: false,
-        timer: 5000,
+        timer: 3000,
         background: bgcolor,
-        color: 'white'
+        color: fontcolor
     })
 }
 

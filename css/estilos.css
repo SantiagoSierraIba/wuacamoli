@@ -1,5 +1,10 @@
 .logo_centrado{
-    display: inline-block; 
+    display: flex;
+    align-items: center; 
+}
+
+.contenido_centrado{
+    margin: 0 auto; 
 }
 
 .logo{
